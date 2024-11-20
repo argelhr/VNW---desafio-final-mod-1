@@ -1,7 +1,12 @@
-function App() {
-  const [count, setCount] = useState(0);
+import React from "react";
+import AppRoutes from "./routes/AppRoutes";
 
-  return <>23</>;
+function App() {
+  return (
+    <>
+      <AppRoutes />
+    </>
+  );
 }
 
 export default App;
