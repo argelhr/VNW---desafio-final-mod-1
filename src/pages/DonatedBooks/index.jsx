@@ -6,18 +6,12 @@ const DonatedBooks = () => {
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
 
-  const mockBooks = [
-    { id: 1, title: "O Protagonista", autor: "Susanne Andrade", category: "Ficção", img: protagonista },
-    { id: 2, title: "O Protagonista", autor: "Susanne Andrade", category: "Ficção", img: protagonista },
-    { id: 3, title: "O Protagonista", autor: "Susanne Andrade", category: "Ficção", img: protagonista },
-    { id: 4, title: "O Protagonista", autor: "Susanne Andrade", category: "Ficção", img: protagonista },
-    { id: 5, title: "O Protagonista", autor: "Susanne Andrade", category: "Ficção", img: protagonista },
-  ];
+  const mockBook = { id: 1, title: "O Protagonista", autor: "Susanne Andrade", category: "Ficção", img: protagonista };
 
   useEffect(() => {
     const timer = Math.random() * 5000;
     setTimeout(() => {
-      setBooks(mockBooks);
+      setBooks([mockBook]);
       setLoading(false);
     }, timer);
   }, []);
