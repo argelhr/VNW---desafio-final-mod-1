@@ -43,10 +43,12 @@ header {
     li {
       text-align: center;
       a {
+        padding: 8px;
         color: #fff;
         text-decoration: none;
         font-size: 18px;
         position: relative;
+        transition: all 0.3s ease-in-out;
         &::after {
           content: "";
           position: absolute;
@@ -65,6 +67,10 @@ header {
             visibility: visible;
             transform: scaleX(1);
           }
+        }
+        &.active {
+          border-radius: 12px;
+          background: rgba(255,140,0,0.3);
         }
       }
     }
@@ -116,6 +122,16 @@ header {
     button:hover {
       background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
+    }
+  }
+
+  @media (max-width: 968px) {
+    padding: 16px 32px;
+    .container_header {
+      flex-direction: column;
+    }
+    form {
+      display: none;
     }
   }
 }

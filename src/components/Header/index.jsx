@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import lupa from "../../assets/search.png";
 import style from "./styles.module.scss";
@@ -15,26 +15,28 @@ const Header = () => {
     <header>
       <div className={style.container_header}>
         <section>
-          <Link to="/">
+          <NavLink to="/">
             <figure>
               <img src={logo} alt={"logotipo - livros vai na web"} />
             </figure>
             <h1>
               <span>Livros</span>Vai na Web
             </h1>
-          </Link>
+          </NavLink>
         </section>
         <nav>
           <ul>
             <li>
-              <Link to="/">Início</Link>
+              <NavLink to="/" className={({ isActive }) => (isActive ? style.active : "")}>
+                Início
+              </NavLink>
             </li>
             <li>
               {" "}
-              <Link to="/livros_doados">Livro Doados</Link>{" "}
+              <NavLink to="/livros_doados" className={({ isActive }) => (isActive ? style.active : "")}>Livro Doados</NavLink>{" "}
             </li>
             <li>
-              <Link to="/quero_doar">Quero doar</Link>
+              <NavLink to="/quero_doar" className={({ isActive }) => (isActive ? style.active : "")}>Quero doar</NavLink>
             </li>
           </ul>
         </nav>
