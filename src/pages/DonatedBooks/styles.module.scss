@@ -1,0 +1,70 @@
+.main_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1366px;
+  margin: 32px auto;
+  margin-top: 32px;
+  h2 {
+    text-align: center;
+  }
+}
+.books_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 64px;
+}
+.book_card {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  border: 3px #005695 solid;
+  border-radius: 20px;
+  img {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 24px;
+  }
+  h3,
+  p {
+    margin: 4px 0;
+  }
+}
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 32px;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #005695;
+  div {
+    width: 28px;
+    height: 28px;
+
+    border: 3px solid #005695;
+    border-bottom: 3px solid blue;
+    border-radius: 100%;
+    animation: spin 1s linear infinite;
+  }
+  span{
+    font-size: 1.5rem;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
