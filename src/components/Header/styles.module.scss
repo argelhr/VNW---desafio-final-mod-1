@@ -129,6 +129,7 @@ header {
     padding: 16px 32px;
     .container_header {
       flex-direction: column;
+      gap: 24px;
     }
     form {
       display: none;
