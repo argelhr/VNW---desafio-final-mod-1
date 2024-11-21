@@ -10,7 +10,11 @@ const Footer = () => {
   return (
     <footer>
       <div className={style.footer_container}>
-        <a href="https://www.youtube.com/watch?v=JQuqkk7deOc" target="_blank" rel="noopener noreferrer" aria-label="Ligar para o número 4 0 0 2 2 8 9 2 2 e pedir playstation, playstation, playstation">
+        <a
+          href="https://www.youtube.com/watch?v=JQuqkk7deOc"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ligar para o número 4 0 0 2 2 8 9 2 2 e pedir playstation, playstation, playstation">
           4002-8922
         </a>
         <aside>
@@ -44,6 +48,7 @@ const Footer = () => {
         </aside>
       </div>
       <div className={style.footer_container}></div>
+      <aside className={style.layoutVNW}>Layout desenvolvido pela Vai Na Web para fins educativos - {new Date().getFullYear()}</aside>
     </footer>
   );
 };

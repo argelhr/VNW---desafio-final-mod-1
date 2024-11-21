@@ -1,13 +1,12 @@
 footer {
   display: block;
   background: #005695;
-  padding: 16px 64px;
 }
 .footer_container {
   margin: 0 auto;
+  padding: 16px 64px 0 64px;
   display: flex;
   justify-content: space-between;
-  background: #005695;
   max-width: 1366px;
   & > a {
     display: flex;
@@ -46,4 +45,12 @@ footer {
     gap: 16px;
     align-items: center;
   }
+}
+
+.layoutVNW{
+  width: 100%;
+  padding: 24px 64px;
+  text-align: center;
+  color: white;
+  background-color: #232020;
 }
