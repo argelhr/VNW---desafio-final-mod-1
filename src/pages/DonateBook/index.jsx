@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./styles.module.scss";
 import bookIcon from "../../assets/book.png";
+import toast, { Toaster } from "react-hot-toast";
 
 const DonateBook = () => {
   const [book, setBook] = useState({
@@ -11,6 +12,11 @@ const DonateBook = () => {
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  
+  const toastProps = {
+    duration: 4000,
+    position: "top-right",
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,12 +39,16 @@ const DonateBook = () => {
       setLoading(true);
       const response = new Promise((resolve, reject) => {
         setTimeout(() => {
+          const errorMock = Math.random() > 0.98;
+          if (errorMock) {
+            return reject(new Error("Erro ao enviar livro, tente novamente!"));
+          }
           resolve({ data: book });
         }, 2000);
       });
       const { data } = await response;
 
-      alert("Livro enviado com sucesso!");
+      toast.success(`Livro ${data.title} doado com sucesso!`, toastProps);
       setBook({
         title: "",
         categoria: "",
@@ -48,6 +58,7 @@ const DonateBook = () => {
       setLoading(false);
     } catch (error) {
       setError(error.message);
+      toast.error(error.message, toastProps);
       setLoading(false);
     }
   };
@@ -66,7 +77,7 @@ const DonateBook = () => {
     if (error) {
       setTimeout(() => {
         setError(null);
-      }, 1000);
+      }, 4000);
     }
   }, [error]);
 
@@ -97,6 +108,7 @@ const DonateBook = () => {
         </form>
       </div>
       <div className={style.main_container}>{error && <p>{error}</p>}</div>
+      <Toaster/>
     </main>
   );
 };
