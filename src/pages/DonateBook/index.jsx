@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import style from "./styles.module.scss";
 import bookIcon from "../../assets/book.png";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const DonateBook = () => {
   const [book, setBook] = useState({
@@ -117,7 +117,6 @@ const DonateBook = () => {
         </form>
       </div>
       <div className={style.main_container}>{error && <p>{error}</p>}</div>
-      <Toaster />
     </main>
   );
 };
