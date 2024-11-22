@@ -37,10 +37,13 @@ header {
   ul {
     display: flex;
     width: 100%;
-    gap: clamp(16px, 2vw, 32px);
+    gap: 16px;
     justify-content: space-between;
     padding: 12px 0;
     li {
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
       text-align: center;
       a {
         padding: 8px 16px;
@@ -49,15 +52,14 @@ header {
         font-size: 18px;
         position: relative;
         transition: all 0.3s ease-in-out;
-        border-radius: 4px;
-        &:hover {
-          color: #fff;
-          background: #0095c630;
-        }
-        &.active {
-          background: #0095c6;
-          text-shadow: 1px 1px 1px #212121;
-        }
+      }
+      &:hover {
+        color: #fff;
+        background: #0095c630;
+      }
+      &:has(a.active) {
+        background: #0095c6;
+        text-shadow: 1px 1px 1px #212121;
       }
     }
   }
