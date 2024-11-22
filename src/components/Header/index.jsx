@@ -6,6 +6,7 @@ import style from "./styles.module.scss";
 
 const Header = () => {
   const searchInput = useRef(null);
+  const checkRef = useRef(null);
 
   const onFormClick = () => {
     searchInput.current.focus();
@@ -23,6 +24,12 @@ const Header = () => {
               <span>Livros</span>Vai na Web
             </h1>
           </NavLink>
+          <div className={style.menu} onClick={() => checkRef.current.click()}>
+            <input type="checkbox" ref={checkRef} />
+            <div />
+            <div />
+            <div />
+          </div>
         </section>
         <nav>
           <ul>

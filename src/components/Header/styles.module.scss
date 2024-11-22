@@ -1,9 +1,11 @@
 header {
   display: flex;
   justify-content: center;
+  align-items: center;
   background: linear-gradient(90deg, #001b2f 0%, #005695 100%);
   color: #fff;
   padding: 16px 64px;
+  transition: all 1s ease-in-out;
 
   .container_header {
     display: flex;
@@ -11,6 +13,9 @@ header {
     max-width: 1366px;
     justify-content: space-between;
     align-items: center;
+    vertical-align: middle;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
   }
 
   section {
@@ -34,12 +39,17 @@ header {
     }
   }
 
+  nav{
+    padding: 0 16px;
+  }
+
   ul {
     display: flex;
     width: 100%;
     gap: 16px;
     justify-content: space-between;
-    padding: 12px 0;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
     li {
       border-radius: 4px;
       display: grid;
@@ -125,6 +135,102 @@ header {
     }
     form {
       display: none;
+    }
+  }
+
+  .menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 968px) {
+    padding: 16px 32px;
+
+    .container_header {
+      gap: 8px;
+    }
+
+    section {
+      width: 100%;
+      gap: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 16px;
+      height: 12px;
+      cursor: pointer;
+      position: relative;
+      div {
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        border-radius: 4px;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    .menu input[type="checkbox"] {
+      display: none;
+    }
+
+    .menu input[type="checkbox"]:checked ~ div:nth-child(2) {
+      transform: rotate(0);
+      top: 0;
+    }
+    .menu input[type="checkbox"]:checked ~ div:nth-child(3) {
+      top: 50%;
+      opacity: 1;
+    }
+    .menu input[type="checkbox"]:checked ~ div:nth-child(4) {
+      transform: rotate(0);
+      top: 100%;
+    }
+
+    .menu input[type="checkbox"] ~ div:nth-child(2) {
+      transform: rotate(45deg);
+      top: 50%;
+    }
+    .menu input[type="checkbox"] ~ div:nth-child(3) {
+      opacity: 0;
+    }
+    .menu input[type="checkbox"] ~ div:nth-child(4) {
+      transform: rotate(-45deg);
+      top: 50%;
+    }
+
+    &:has(input[type="checkbox"]:checked) nav {
+      animation: hideMenu 0.5s ease-in-out forwards;
+    }
+
+    &:not(:has(input[type="checkbox"]:checked)) nav {
+      animation: showMenu 0.5s ease-in-out forwards;
+    }
+
+    @keyframes hideMenu {
+      0% {
+        max-height: 200px;
+        opacity: 1;
+      }
+      100% {
+        max-height: 0;
+        opacity: 0;
+      }
+    }
+    @keyframes showMenu {
+      0% {
+        max-height: 0;
+        opacity: 0;
+      }
+      100% {
+        max-height: 200px;
+        opacity: 1;
+      }
     }
   }
 }
