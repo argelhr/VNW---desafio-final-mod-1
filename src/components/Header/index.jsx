@@ -33,7 +33,7 @@ const Header = () => {
             </li>
             <li>
               {" "}
-              <NavLink to="/livros_doados" className={({ isActive }) => (isActive ? style.active : "")}>Livro Doados</NavLink>{" "}
+              <NavLink to="/livros_doados" className={({ isActive }) => (isActive ? style.active : "")}>Livros doados</NavLink>{" "}
             </li>
             <li>
               <NavLink to="/quero_doar" className={({ isActive }) => (isActive ? style.active : "")}>Quero doar</NavLink>
