@@ -43,34 +43,20 @@ header {
     li {
       text-align: center;
       a {
-        padding: 8px;
+        padding: 8px 16px;
         color: #fff;
         text-decoration: none;
         font-size: 18px;
         position: relative;
         transition: all 0.3s ease-in-out;
-        &::after {
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 2px;
-          bottom: 0;
-          left: 0;
-          background-color: #fff;
-          visibility: hidden;
-          transform: scaleX(0);
-          transition: all 0.3s ease-in-out;
-        }
+        border-radius: 4px;
         &:hover {
           color: #fff;
-          &::after {
-            visibility: visible;
-            transform: scaleX(1);
-          }
+          background: #0095c630;
         }
         &.active {
-          border-radius: 12px;
-          background: radial-gradient(circle, rgba(0, 140, 255, 0.3) 0%, rgba(0, 140, 255, 0.8) 100%);
+          background: #0095c6;
+          text-shadow: 1px 1px 1px #212121;
         }
       }
     }
@@ -79,18 +65,18 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 8px;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     border-radius: 20px;
-    padding: 8px 16px;
+    padding: 4px 16px;
     input {
       background: none;
       border: none;
-      border-bottom: 1px solid #fff3;
+      border-bottom: 1px solid #fff1;
       outline: none;
       padding: 8px;
       color: #fff;
       caret-color: #fff;
+      font-size: 16px;
       &::placeholder {
         color: #fff;
       }
@@ -108,7 +94,7 @@ header {
     }
     button {
       padding: 8px;
-      border-radius: 2px;
+      border-radius: 8px;
       background: none;
       border: none;
       cursor: pointer;
@@ -116,12 +102,16 @@ header {
       img {
         width: 24px;
         height: 24px;
+        transition: all 0.3s ease-in-out;
+        filter: drop-shadow(0 0 #313131);
       }
     }
-    //hover do botão
     button:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
+      background: #0095c6;
+      box-shadow: 1px 1px 2px 2px #31313130;
+      & img {
+        filter: drop-shadow(1px 1px #313131);
+      }
     }
   }
 
