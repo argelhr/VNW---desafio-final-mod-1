@@ -17,7 +17,10 @@ const useFetch = (endpoint, method = "GET") => {
         const response = await axios({
           url: `${API_URL}/${endpoint}`,
           method,
-          data: body
+          data: method !== "GET" ? body : undefined,
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
 
         setData(response.data);
