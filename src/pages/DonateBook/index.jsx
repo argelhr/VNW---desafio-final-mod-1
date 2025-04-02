@@ -11,7 +11,7 @@ const DonateBook = () => {
     autor: "",
     link: "",
   });
-  const { error, loading, fetchData } = useFetch("api/doar", "POST");
+  const { error, loading, fetchData } = useFetch("/api/doar", "POST");
   const toastID = useRef(null);
 
   const toastProps = {
