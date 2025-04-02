@@ -8,7 +8,7 @@ const DonatedBooks = () => {
   if (loading)
     return (
       <main>
-        <Loading />;
+        <Loading />
       </main>
     );
 
