@@ -15,7 +15,7 @@ const useFetch = (endpoint, method = "GET") => {
         setError(null);
 
         const response = await axios({
-          url: `${API_URL+endpoint}`,
+          url: `${API_URL}${endpoint}`,
           method,
           data: method !== "GET" ? body : undefined,
           headers: {
