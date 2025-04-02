@@ -12,7 +12,7 @@ const DonatedBooks = () => {
       </main>
     );
 
-  if (!error) {
+  if (error) {
     return (
       <main>
         <div className={styles.main_container}>
