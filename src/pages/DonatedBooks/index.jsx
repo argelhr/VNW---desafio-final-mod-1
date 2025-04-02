@@ -1,20 +1,9 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import protagonista from "../../assets/protagonista.png";
 import { useEffect } from "react";
+import useFetch from "../../hooks/useFetch";
 const DonatedBooks = () => {
-  const [loading, setLoading] = useState(true);
-  const [books, setBooks] = useState([]);
-
-  const mockBook = { id: 1, title: "O Protagonista", autor: "Susanne Andrade", category: "Ficção", img: protagonista };
-
-  useEffect(() => {
-    const timer = Math.random() * 5000;
-    setTimeout(() => {
-      setBooks([mockBook]);
-      setLoading(false);
-    }, timer);
-  }, []);
+  const { data, error, loading } = useFetch("/api/livros");
 
   if (loading)
     return (
@@ -23,7 +12,19 @@ const DonatedBooks = () => {
       </main>
     );
 
-  if (!books?.length)
+  if (!error) {
+    return (
+      <main>
+        <div className={styles.main_container}>
+          <h2>Houve algum problema ao recuperar os livros</h2>
+          <p>Tente novamente mais tarde!</p>
+          <p>Erro: {error}</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (!data?.length)
     return (
       <main>
         <div className={styles.main_container}>
@@ -38,11 +39,11 @@ const DonatedBooks = () => {
         <h2>Livros doados</h2>
       </div>
       <div className={styles.books_container}>
-        {books?.map((book) => (
+        {data?.map((book) => (
           <div key={book.id} className={styles.book_card}>
-            <img src={book.img} alt={`Capa do livro ${book.title}`} />
+            <img src={book.image_url} alt={`Capa do livro ${book.title}`} />
             <h3>{book.title}</h3>
-            <p>{book.autor}</p>
+            <p>{book.author}</p>
             <p>{book.category}</p>
           </div>
         ))}
