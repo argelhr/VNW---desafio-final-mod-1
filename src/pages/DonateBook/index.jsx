@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import style from "./styles.module.scss";
 import bookIcon from "../../assets/book.png";
 import toast from "react-hot-toast";
+import useFetch from "../../hooks/useFetch";
 
 const DonateBook = () => {
   const [book, setBook] = useState({
@@ -10,8 +11,7 @@ const DonateBook = () => {
     autor: "",
     link: "",
   });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { error, loading, fetchData } = useFetch("api/doar", "POST");
   const toastID = useRef(null);
 
   const toastProps = {
@@ -29,7 +29,6 @@ const DonateBook = () => {
     if (!title || !categoria || !autor || !link) {
       throw new Error("Preencha todos os campos");
     }
-    setError(null);
   };
 
   const handleSubmit = async (e) => {
@@ -37,30 +36,24 @@ const DonateBook = () => {
       e.preventDefault();
       validateBook();
 
-      setLoading(true);
-      const response = new Promise((resolve, reject) => {
-        setTimeout(() => {
-          const errorMock = Math.random() > 0.98;
-          if (errorMock) {
-            return reject(new Error("Erro ao enviar livro, tente novamente!"));
-          }
-          resolve({ data: book });
-        }, 2000);
-      });
-      const { data } = await response;
+      const requestBody = {
+        title: book.title,
+        category: book.categoria,
+        author: book.autor,
+        image_url: book.link,
+      };
 
-      toastID.current = toast.success(`Livro ${data.title} doado com sucesso!`, toastProps);
+      await fetchData(requestBody);
+
+      toastID.current = toast.success(`Livro ${book.title} doado com sucesso!`, toastProps);
       setBook({
         title: "",
         categoria: "",
         autor: "",
         link: "",
       });
-      setLoading(false);
-    } catch (error) {
-      setError(error.message);
-      toastID.current = toast.error(error.message, toastProps);
-      setLoading(false);
+    } catch (e) {
+      toastID.current = toast.error(e.message, toastProps);
     }
   };
 
@@ -81,14 +74,6 @@ const DonateBook = () => {
       }
     };
   }, []);
-
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        setError(null);
-      }, 4000);
-    }
-  }, [error]);
 
   return (
     <main>
